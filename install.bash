@@ -117,7 +117,7 @@ popd
 
 # Install pack
 
-git clone git@github.com:stefan-hoeck/idris2-pack.git "$PACK_DIR/clones/idris2-pack"
+git clone git@github.com:acodefarmer048/idris2-pack.git "$PACK_DIR/clones/idris2-pack"
 pushd "$PACK_DIR/clones/idris2-pack"
 "$BOOT_PATH" --build pack.ipkg
 mkdir -p "$PACK_DIR/bin"
