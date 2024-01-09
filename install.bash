@@ -63,7 +63,7 @@ mkdir "$PACK_DIR"
 mkdir "$PACK_DIR/clones"
 mkdir "$PACK_DIR/db"
 
-git clone https://github.com/stefan-hoeck/idris2-pack-db.git "$PACK_DIR/clones/idris2-pack-db"
+git clone git@github.com:acodefarmer048/idris2-pack-db.git "$PACK_DIR/clones/idris2-pack-db"
 cp "$PACK_DIR/clones/idris2-pack-db/collections/"* "$PACK_DIR/db"
 
 LATEST_DB="$(find "$PACK_DIR/db" -name 'nightly-*' | sort | tail -1)"
@@ -72,7 +72,7 @@ IDRIS2_COMMIT=$(sed -ne '/^\[idris2\]/,/^commit/{/^commit/s/commit *= *"\([a-f0-
 
 # Bootstrap the Idris compiler
 
-git clone https://github.com/idris-lang/Idris2.git "$PACK_DIR/clones/Idris2"
+git clone git@github.com:acodefarmer048/Idris2.git "$PACK_DIR/clones/Idris2"
 pushd "$PACK_DIR/clones/Idris2"
 git checkout "$IDRIS2_COMMIT"
 
@@ -100,7 +100,7 @@ popd
 # Install filepath
 
 FILEPATH_COMMIT=$(sed -ne '/^\[db.filepath\]/,/^commit/{/^commit/s/commit *= *"\([a-f0-9]*\)"/\1/p;}' "$PACK_DIR/db/$PACKAGE_COLLECTION.toml")
-git clone https://github.com/stefan-hoeck/idris2-filepath.git "$PACK_DIR/clones/idris2-filepath"
+git clone git@github.com:acodefarmer048/idris2-filepath.git "$PACK_DIR/clones/idris2-filepath"
 pushd "$PACK_DIR/clones/idris2-filepath"
 git checkout "$FILEPATH_COMMIT"
 "$BOOT_PATH" --install filepath.ipkg
@@ -109,7 +109,7 @@ popd
 # Install toml-idr
 
 TOML_COMMIT=$(sed -ne '/^\[db.toml\]/,/^commit/{/^commit/s/commit *= *"\([a-f0-9]*\)"/\1/p;}' "$PACK_DIR/db/$PACKAGE_COLLECTION.toml")
-git clone https://github.com/cuddlefishie/toml-idr "$PACK_DIR/clones/toml-idr"
+git clone git@github.com:acodefarmer048/toml-idr "$PACK_DIR/clones/toml-idr"
 pushd "$PACK_DIR/clones/toml-idr"
 git checkout "$TOML_COMMIT"
 "$BOOT_PATH" --install toml.ipkg
@@ -117,7 +117,7 @@ popd
 
 # Install pack
 
-git clone https://github.com/stefan-hoeck/idris2-pack.git "$PACK_DIR/clones/idris2-pack"
+git clone git@github.com:stefan-hoeck/idris2-pack.git "$PACK_DIR/clones/idris2-pack"
 pushd "$PACK_DIR/clones/idris2-pack"
 "$BOOT_PATH" --build pack.ipkg
 mkdir -p "$PACK_DIR/bin"
